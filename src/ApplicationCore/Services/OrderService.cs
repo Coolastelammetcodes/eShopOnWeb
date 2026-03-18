@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Ardalis.GuardClauses;
 using MediatR;
@@ -51,7 +52,15 @@ public class OrderService : IOrderService
         }).ToList();
 
         var order = new Order(basket.BuyerId, shippingAddress, items);
-
+        
+        if (Random.Shared.Next(0,10) > 5)
+        {
+            order.SetToOutOnDelivery();
+        }
+        else
+        {
+            order.SetToDelivered();
+        }
         await _orderRepository.AddAsync(order);
         OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent(order);
         await _mediator.Publish(orderCreatedEvent);

@@ -22,6 +22,10 @@
     </div>
 </section>
 <div class="container">
+    <p style="text-align: center;"
+    <h3>Vi erbjuder för närvarande @Model.CatalogModel.PaginationInfo.TotalItems produkter</h3>
+        
+    </p>
     @if (Model.CatalogModel.CatalogItems.Any())
     {
         <partial name="_pagination" for="CatalogModel.PaginationInfo" />

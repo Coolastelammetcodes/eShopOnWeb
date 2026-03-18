@@ -13,24 +13,24 @@ public class BasketAddItem
     [Fact]
     public void AddsBasketItemIfNotPresent()
     {
-        var basket = new Basket(_buyerId);
-        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+        var basket = new Basket(_buyerId); // Arrange
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity); // Act
 
-        var firstItem = basket.Items.Single();
-        Assert.Equal(_testCatalogItemId, firstItem.CatalogItemId);
-        Assert.Equal(_testUnitPrice, firstItem.UnitPrice);
-        Assert.Equal(_testQuantity, firstItem.Quantity);
+        var firstItem = basket.Items.Single(); // Act
+        Assert.Equal(_testCatalogItemId, firstItem.CatalogItemId); // Assert, ser till att den hämta katalogidt
+        Assert.Equal(_testUnitPrice, firstItem.UnitPrice); // Assert, ser till att den hämtar priset
+        Assert.Equal(_testQuantity, firstItem.Quantity); // Assert, ser till att den hämtar rätt kvantitet
     }
 
     [Fact]
     public void IncrementsQuantityOfItemIfPresent()
     {
-        var basket = new Basket(_buyerId);
-        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
-        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity);
+        var basket = new Basket(_buyerId); //Arrange
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity); //Act
+        basket.AddItem(_testCatalogItemId, _testUnitPrice, _testQuantity); //Act
 
-        var firstItem = basket.Items.Single();
-        Assert.Equal(_testQuantity * 2, firstItem.Quantity);
+        var firstItem = basket.Items.Single(); //Act
+        Assert.Equal(_testQuantity * 2, firstItem.Quantity); //Assert
     }
 
     [Fact]

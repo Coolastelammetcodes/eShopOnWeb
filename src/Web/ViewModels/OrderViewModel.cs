@@ -9,6 +9,6 @@ public class OrderViewModel
     public int OrderNumber { get; set; }
     public DateTimeOffset OrderDate { get; set; }
     public decimal Total { get; set; }
-    public string Status => DEFAULT_STATUS;
+    public string? Status { get; set;}
     public Address? ShippingAddress { get; set; }
 }
